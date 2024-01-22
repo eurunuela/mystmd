@@ -138,8 +138,8 @@ function getOutput(
       formats.includes(ExportFormats.tex)
         ? 'tex'
         : formats.includes(ExportFormats.typst)
-        ? 'typ'
-        : undefined,
+          ? 'typ'
+          : undefined,
     );
   }
   if (!path.extname(output)) {
