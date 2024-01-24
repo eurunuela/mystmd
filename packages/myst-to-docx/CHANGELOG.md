@@ -1,5 +1,18 @@
 # myst-to-docx
 
+## 1.0.9
+
+### Patch Changes
+
+- f78db0b: Update myst-spec
+- Updated dependencies [f78db0b]
+- Updated dependencies [9178a214]
+- Updated dependencies [ffc1061f]
+- Updated dependencies [aa335d74]
+  - myst-spec-ext@1.1.22
+  - myst-common@1.1.22
+  - myst-frontmatter@1.1.22
+
 ## 1.0.8
 
 ### Patch Changes

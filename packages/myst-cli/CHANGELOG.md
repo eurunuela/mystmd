@@ -1,5 +1,57 @@
 # myst-cli
 
+## 1.1.38
+
+### Patch Changes
+
+- 70ee1eae: Log errors on failed export builds
+- f78db0b: Update myst-spec
+- 860c2976: Bibtex with capital ARTICLE now no longer duplicates all entries
+- 85ae9b4a: Support cross-references to file allowing labels on lifted headers
+- 9178a214: Allow typst to have multiple pages for export (e.g. as a book)
+- d0eab1c2: Support html outputs in static exports
+- aa335d74: Basic title consumption in tex/typst exports
+- 45823775: Supprt SVG not PDF in typst.
+- aa335d74: Gather page frontmatter on load
+- aa335d74: Add heading depth transform to normalize headings
+- d0eab1c2: Fix static output priority image > html > text
+- Updated dependencies [f78db0b]
+- Updated dependencies [2be01f12]
+- Updated dependencies [409adad8]
+- Updated dependencies [85ae9b4a]
+- Updated dependencies [d0eab1c2]
+- Updated dependencies [a7e15710]
+- Updated dependencies [9178a214]
+- Updated dependencies [cb3bad07]
+- Updated dependencies [9ea12b12]
+- Updated dependencies [ffc1061f]
+- Updated dependencies [405caef7]
+- Updated dependencies [aa335d74]
+- Updated dependencies [dd23c26f]
+- Updated dependencies [d0eab1c2]
+- Updated dependencies [4a496339]
+- Updated dependencies [405caef7]
+- Updated dependencies [aa335d74]
+- Updated dependencies [2be01f12]
+- Updated dependencies [d2e6e780]
+- Updated dependencies [363c93c5]
+- Updated dependencies [9ea12b12]
+- Updated dependencies [2be01f12]
+  - myst-transforms@1.2.0
+  - myst-ext-proof@1.0.8
+  - myst-spec-ext@1.1.22
+  - myst-to-docx@1.0.9
+  - myst-to-jats@1.0.21
+  - myst-common@1.1.22
+  - myst-parser@1.0.22
+  - myst-to-typst@0.0.9
+  - myst-templates@1.0.16
+  - myst-frontmatter@1.1.22
+  - jtex@1.0.13
+  - tex-to-myst@1.0.17
+  - myst-config@1.1.22
+  - myst-to-tex@1.0.17
+
 ## 1.1.37
 
 ### Patch Changes

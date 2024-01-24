@@ -1,5 +1,17 @@
 # myst-templates
 
+## 1.0.16
+
+### Patch Changes
+
+- a7e15710: Show date as UTC date
+- Updated dependencies [f78db0b]
+- Updated dependencies [9178a214]
+- Updated dependencies [ffc1061f]
+- Updated dependencies [aa335d74]
+  - myst-common@1.1.22
+  - myst-frontmatter@1.1.22
+
 ## 1.0.15
 
 ### Patch Changes

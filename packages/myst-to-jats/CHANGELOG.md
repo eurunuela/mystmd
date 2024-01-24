@@ -1,5 +1,22 @@
 # myst-to-jats
 
+## 1.0.21
+
+### Patch Changes
+
+- f78db0b: Update myst-spec
+- Updated dependencies [f78db0b]
+- Updated dependencies [85ae9b4a]
+- Updated dependencies [9178a214]
+- Updated dependencies [ffc1061f]
+- Updated dependencies [aa335d74]
+- Updated dependencies [aa335d74]
+- Updated dependencies [d2e6e780]
+  - myst-transforms@1.2.0
+  - myst-spec-ext@1.1.22
+  - myst-common@1.1.22
+  - myst-frontmatter@1.1.22
+
 ## 1.0.20
 
 ### Patch Changes
