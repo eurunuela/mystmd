@@ -4,29 +4,29 @@ import type { GenericParent, PluginUtils, References } from 'myst-common';
 import { fileError, fileWarn, RuleId } from 'myst-common';
 import type { PageFrontmatter } from 'myst-frontmatter';
 import { SourceFileKind } from 'myst-spec-ext';
-import type { LinkTransformer } from 'myst-transforms';
 import {
+  abbreviationPlugin,
   basicTransformationsPlugin,
-  htmlPlugin,
-  footnotesPlugin,
-  ReferenceState,
-  MultiPageReferenceState,
-  resolveReferencesTransform,
-  mathPlugin,
   codePlugin,
+  DOITransformer,
   enumerateTargetsPlugin,
+  footnotesPlugin,
+  GithubTransformer,
+  glossaryPlugin,
+  htmlPlugin,
+  inlineMathSimplificationPlugin,
+  joinGatesPlugin,
   keysTransform,
   linksTransform,
+  LinkTransformer,
+  mathPlugin,
+  MultiPageReferenceState,
   MystTransformer,
-  WikiTransformer,
-  GithubTransformer,
-  RRIDTransformer,
-  DOITransformer,
-  joinGatesPlugin,
-  glossaryPlugin,
-  abbreviationPlugin,
   reconstructHtmlPlugin,
-  inlineMathSimplificationPlugin,
+  ReferenceState,
+  resolveReferencesTransform,
+  RRIDTransformer,
+  WikiTransformer,
 } from 'myst-transforms';
 import { unified } from 'unified';
 import { select, selectAll } from 'unist-util-select';
@@ -43,26 +43,25 @@ import {
   importMdastFromJson,
   includeFilesTransform,
   liftCodeMetadataToBlock,
-  transformLinkedDOIs,
-  transformOutputsToCache,
-  transformCitations,
-  transformImageFormats,
-  transformThumbnail,
-  StaticFileTransformer,
-  renderInlineExpressionsPlugin,
-  loadInlineExpressionsPlugin,
   propagateBlockDataToCode,
-  transformBanner,
   reduceOutputs,
-  transformPlaceholderImages,
+  renderInlineExpressionsPlugin,
+  StaticFileTransformer,
+  transformBanner,
+  transformCitations,
   transformDeleteBase64UrlSource,
-  transformWebp,
-  transformOutputsToFile,
+  transformFilterOutputStreams,
+  transformImageFormats,
+  transformImagesToDisk,
   transformImagesToEmbed,
   transformImagesWithoutExt,
-  transformImagesToDisk,
-  transformFilterOutputStreams,
   transformLiftCodeBlocksInJupytext,
+  transformLinkedDOIs,
+  transformOutputsToCache,
+  transformOutputsToFile,
+  transformPlaceholderImages,
+  transformThumbnail,
+  transformWebp,
 } from '../transforms/index.js';
 import type { ImageExtensions } from '../utils/resolveExtension.js';
 import { logMessagesFromVFile } from '../utils/logMessagesFromVFile.js';
@@ -171,7 +170,6 @@ export async function transformMdast(
 
   const pipe = unified()
     .use(reconstructHtmlPlugin) // We need to group and link the HTML first
-    .use(loadInlineExpressionsPlugin) // Happens before math and images!
     .use(htmlPlugin, { htmlHandlers }) // Some of the HTML plugins need to operate on the transformed html, e.g. figure caption transforms
     .use(basicTransformationsPlugin, {
       parser: (content: string) => parseMyst(session, content, file),

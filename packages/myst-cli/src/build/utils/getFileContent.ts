@@ -34,7 +34,7 @@ export async function getFileContent(
     ...project.bibliography.map((path) => loadFile(session, path, projectPath, '.bib')),
     // Load all content (.md and .ipynb)
     ...allFiles.map((file) =>
-      loadFile(session, file, projectPath, undefined, { minifyMaxCharacters: 0 }),
+      loadFile(session, file, projectPath, undefined),
     ),
     // Load up all the intersphinx references
     loadIntersphinx(session, { projectPath }) as Promise<any>,

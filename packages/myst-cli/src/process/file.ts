@@ -34,14 +34,12 @@ function checkCache(cache: ISessionWithCache, content: string, file: string) {
  * @param file path to file to load
  * @param projectPath path to project directory
  * @param extension pre-computed file extension
- * @param opts loading options
  */
 export async function loadFile(
   session: ISession,
   file: string,
   projectPath?: string,
   extension?: '.md' | '.ipynb' | '.bib',
-  opts?: { minifyMaxCharacters?: number },
 ) {
   await session.loadPlugins();
   const toc = tic();
@@ -77,7 +75,7 @@ export async function loadFile(
         const content = fs.readFileSync(file).toString();
         const { sha256, useCache } = checkCache(cache, content, file);
         if (useCache) break;
-        const mdast = await processNotebook(cache, file, content, opts);
+        const mdast = await processNotebook(cache, file, content);
         const frontmatter = getPageFrontmatter(session, mdast, vfile);
         cache.$setMdast(file, {
           sha256,
