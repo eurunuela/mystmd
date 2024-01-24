@@ -49,7 +49,8 @@ import {
   transformImageFormats,
   transformThumbnail,
   StaticFileTransformer,
-  inlineExpressionsPlugin,
+  renderInlineExpressionsPlugin,
+  loadInlineExpressionsPlugin,
   propagateBlockDataToCode,
   transformBanner,
   reduceOutputs,
@@ -170,7 +171,7 @@ export async function transformMdast(
 
   const pipe = unified()
     .use(reconstructHtmlPlugin) // We need to group and link the HTML first
-    .use(inlineExpressionsPlugin) // Happens before math and images!
+    .use(loadInlineExpressionsPlugin) // Happens before math and images!
     .use(htmlPlugin, { htmlHandlers }) // Some of the HTML plugins need to operate on the transformed html, e.g. figure caption transforms
     .use(basicTransformationsPlugin, {
       parser: (content: string) => parseMyst(session, content, file),
@@ -181,7 +182,8 @@ export async function transformMdast(
     .use(glossaryPlugin, { state }) // This should be before the enumerate plugins
     .use(abbreviationPlugin, { abbreviations: frontmatter.abbreviations })
     .use(enumerateTargetsPlugin, { state }) // This should be after math/container transforms
-    .use(joinGatesPlugin);
+    .use(joinGatesPlugin)
+    .use(renderInlineExpressionsPlugin);
   // Load custom transform plugins
   session.plugins?.transforms.forEach((t) => {
     if (t.stage !== 'document') return;
